@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CadastroEstudante {
-    private ArrayList<Estudante> cadastroest = new ArrayList<>();
+    private ArrayList<Estudante> estudante = new ArrayList<>();
 
     public void cadastrar(Scanner sc) {
         System.out.print("Nome: ");
@@ -14,16 +14,18 @@ public class CadastroEstudante {
         System.out.print("Curso: ");
         String curso = sc.nextLine();
 
-        cadastro.add(new Estudante(nome, matricula, curso));
+        System.out.print("Periodo: ");
+        String periodo = sc.nextLine();
+
+        System.out.print("Idade: ");
+        int idade = sc.nextInt();
+
+        estudante.add(new Estudante(nome, matricula, curso, periodo, idade));
     }
 
     public void listar() {
-        for (Estudante e : cadastro) {
-            e.exibir();
+        for (Estudante e : estudante) {
+            e.toString();
         }
-    }
-
-    public ArrayList<Estudante> getLista() {
-        return lista;
     }
 }
