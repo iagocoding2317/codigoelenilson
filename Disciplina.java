@@ -3,15 +3,16 @@ import java.util.ArrayList;
 public class Disciplina {
     private String nome;
     private String professor;
-    private String curso;
-    private String periodo;
+    private String codigo;
+    private String turno;
     private ArrayList<Estudante> estudantes;
+    
 
-    public Disciplina(String nome, String professor, String curso, String periodo){
+    public Disciplina(String nome, String professor, String codigo, String turno) {
         this.nome = nome;
         this.professor = professor;
-        this.curso = curso;
-        this.periodo = periodo;
+        this.codigo = codigo;
+        this.turno = turno;
         this.estudantes = new ArrayList<>();
     }
 
@@ -23,12 +24,12 @@ public class Disciplina {
         return professor;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public String getPeriodo() {
-        return periodo;
+    public String getTurno() {
+        return turno;
     }
 
     public ArrayList<Estudante> getEstudantes() {
@@ -43,19 +44,27 @@ public class Disciplina {
         this.professor = professor;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public void setPeriodo(String periodo) {
-        this.periodo = periodo;
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
 
     public void setEstudantes(ArrayList<Estudante> estudantes) {
         this.estudantes = estudantes;
     }
 
-    public void exibir() {
-        System.out.println("Nome: " + nome + " Professor: " + professor + " Curso: " + curso + " Período: " + periodo + "Estudantes: " + estudantes);
+   
+
+    public void inserirEstudante(Estudante e){
+        estudantes.add(e);
+
+    }
+
+    
+    public String toString() {
+     return "Nome: " + nome + " Professor: " + professor + " Codigo: " + codigo + " Turno: " + turno + " Estudantes: " + estudantes;
     }
 }
