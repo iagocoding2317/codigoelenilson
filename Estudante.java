@@ -1,9 +1,12 @@
+
 public class Estudante {
     private String nome;
     private String matricula;
     private String curso;
     private String periodo;
     private int idade;
+
+    
 
     public Estudante(String nome, String matricula, String curso, String periodo, int idade) {
         this.nome = nome;
@@ -53,6 +56,7 @@ public class Estudante {
         this.idade = idade;
     }
 
+    
     public String toString() {
          return "Nome: " + nome + " Matrícula: " + matricula + " Curso: " + curso + " Período: " + periodo + " Idade: " + idade;
     }
