@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CadastroEstudante {
-    private ArrayList<Estudante> estudante = new ArrayList<>();
+    private List<Estudante> estudantes = new ArrayList<>();
 
     public void cadastrar(Scanner sc) {
         System.out.print("Nome: ");
@@ -19,13 +20,24 @@ public class CadastroEstudante {
 
         System.out.print("Idade: ");
         int idade = sc.nextInt();
+        sc.nextLine();
 
-        estudante.add(new Estudante(nome, matricula, curso, periodo, idade));
+        estudantes.add(new Estudante(nome, matricula, curso, periodo, idade));
+        System.out.println("Estudante cadastrado com sucesso!");
     }
 
     public void listar() {
-        for (Estudante e : estudante) {
-            e.toString();
+        if (estudantes.isEmpty()) {
+            System.out.println("Nenhum estudante cadastrado.");
+            return;
         }
+        System.out.println(" ESTUDANTES");
+        for (int i = 0; i < estudantes.size(); i++) {
+            System.out.println("[" + i + "] " + estudantes.get(i));
+        }
+    }
+
+    public List<Estudante> getLista() {
+        return estudantes;
     }
 }
