@@ -19,7 +19,7 @@ public class Menu {
             opcao = sc.nextInt();
             sc.nextLine();
             processarOpcao(opcao, sc);
-        } while (opcao != 0);
+        } while (opcao != 5);
 
         sc.close();
     }
@@ -27,11 +27,10 @@ public class Menu {
     private void exibirMenu() {
         System.out.println("\n--- MENU ---");
         System.out.println("1 - Cadastrar Estudante");
-        System.out.println("2 - Listar Estudantes");
-        System.out.println("3 - Cadastrar Disciplina");
-        System.out.println("4 - Listar Disciplinas");
-        System.out.println("5 - Inserir Estudante em Disciplina");
-        System.out.println("0 - Sair");
+        System.out.println("2 - Cadastrar Disciplina");
+        System.out.println("3 - Inserir Estudante em Disciplina");
+        System.out.println("4 - Listar Tudo" );
+        System.out.println("5 - Sair");
     }
 
     private void processarOpcao(int opcao, Scanner sc) {
@@ -40,18 +39,16 @@ public class Menu {
             cadastroEstudante.cadastrar(sc);
             break;
         case 2:
-            cadastroEstudante.listar();
+            cadastroDisciplina.cadastrarDisciplina(sc);
             break;
         case 3:
-            cadastroDisciplina.cadastrar(sc);
+            inserirAluno(sc);
             break;
         case 4:
             cadastroDisciplina.listar();
+            cadastroEstudante.listar();
             break;
         case 5:
-            inserirAluno(sc);
-            break;
-        case 0:
             System.out.println("Encerrando...");
             break;
         default:
@@ -60,6 +57,11 @@ public class Menu {
     }
 
     private void inserirAluno(Scanner sc) {
+    if (cadastroEstudante.getLista().isEmpty() || cadastroDisciplina.getLista().isEmpty()) {
+        System.out.println("Cadastre ao menos um estudante e uma disciplina antes.");
+        return;
+    }
+
         cadastroEstudante.listar();
         System.out.print("Escolha o índice do estudante: ");
         int i = sc.nextInt();
@@ -68,8 +70,14 @@ public class Menu {
         System.out.print("Escolha o índice da disciplina: ");
         int j = sc.nextInt();
 
+        if (i < 0 || i >= cadastroEstudante.getLista().size() || j < 0 || j >= cadastroDisciplina.getLista().size()) {
+            System.out.println("Índice inválido.");
+            return;
+        }
+
         Estudante estudante = cadastroEstudante.getLista().get(i);
         Disciplina disciplina = cadastroDisciplina.getLista().get(j);
         disciplina.inserirEstudante(estudante);
+        System.out.println("Estudante: " + estudante.getNome() + "inserido em/na disciplina: " + disciplina.getNome());
     }
 }
