@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CadastroDisciplina {
-    private ArrayList<Disciplina> disciplina = new ArrayList<>();
+    private List<Disciplina> disciplinas = new ArrayList<>();
 
     public void cadastrarDisciplina(Scanner sc) {
         System.out.print("Nome: ");
@@ -11,22 +12,22 @@ public class CadastroDisciplina {
         System.out.print("Professor: ");
         String professor = sc.nextLine();
 
-        System.out.print("Curso: ");
-        String curso = sc.nextLine();
+        System.out.print("Código: ");
+        String codigo = sc.nextLine();
 
-        System.out.print("Periodo: ");
-        String periodo = sc.nextLine();
+        System.out.print("Turno: ");
+        String turno = sc.nextLine();
 
-        System.out.print("Idade: ");
-        int idade = sc.nextInt();
-
-        estudante.add(new Estudante(nome, professor, curso, periodo, idade));
+        disciplinas.add(new Disciplina(nome, professor, codigo, turno));
     }
 
     public void listar() {
-        for (Estudante e : estudante) {
-            e.toString();
+        for (Disciplina d : disciplinas) {
+            System.out.println(d);
         }
     }
+
+    public List<Disciplina> getLista() {
+        return disciplinas;
+    }
 }
-// Altere isso aqui de acordo com o codigo Disciplina
